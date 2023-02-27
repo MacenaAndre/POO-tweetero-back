@@ -6,19 +6,27 @@ async function createTweet({tweet, username}) {
 
     const user = await signUpRepository.findUser(username);
 
-    const tweet = 
+    const tweetObject = 
         new Tweet({
           username: username,
           tweet: tweet,
           avatar: user.avatar,
         })
 
-    const postedTweet = await tweetRepository.createUserTweet(tweet);
+    const postedTweet = await tweetRepository.createUserTweet(tweetObject);
     return postedTweet;
 }
 
+async function getUserTweets(username) {
+
+    const tweets = await tweetRepository.readUserTweets(username);
+
+    return tweets;
+}
+
 const tweetService = {
-    createTweet
+    createTweet,
+    getUserTweets
 };
   
 export { tweetService };

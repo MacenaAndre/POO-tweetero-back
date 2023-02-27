@@ -9,8 +9,17 @@ async function createUserTweet(data) {
   });
 }
 
+async function readUserTweets(username) {
+    return prisma.tweet.findMany({
+      where: {
+          userName: username,
+      }
+    });
+  }
+
 const tweetRepository = {
-    createUserTweet
+    createUserTweet,
+    readUserTweets
 };
   
 export { tweetRepository };
