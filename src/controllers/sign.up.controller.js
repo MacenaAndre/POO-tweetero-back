@@ -9,7 +9,7 @@ export async function postSignUp(req, res) {
     }
   
     try {
-      const user = await signUpService.createCartItem(avatar, username);
+      const user = await signUpService.createSignUp({avatar, username});
   
       return res.status(200).send('OK deu tudo certo');
     } catch (error) {

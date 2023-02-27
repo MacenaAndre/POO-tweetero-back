@@ -1,7 +1,7 @@
 import { SignUp } from "../models/sign.up.model.js";
 import { signUpRepository } from "../repositories/sign.up.repository.js";
 
-async function createSignUp(avatar, username) {
+async function createSignUp({avatar, username}) {
     const user = 
         new SignUp({
           username: username,

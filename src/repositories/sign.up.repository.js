@@ -1,7 +1,7 @@
 import { prisma } from "../config/database.js";
 
 async function createUser(data) {
-  return prisma.cart.create({
+  return prisma.user.create({
     data: {
         userName: data.username,
         avatar: data.avatar
@@ -9,8 +9,17 @@ async function createUser(data) {
   });
 }
 
+async function findUser(username) {
+  return prisma.user.findFirst({
+    where: {
+        userName: username,
+    }
+  });
+}
+
 const signUpRepository = {
-    createUser
+    createUser,
+    findUser
 };
   
 export { signUpRepository };
